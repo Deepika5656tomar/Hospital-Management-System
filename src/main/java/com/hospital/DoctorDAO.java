@@ -56,7 +56,6 @@ public class DoctorDAO {
                 	 case "phoneno":
                 		 doctor.setPhoneno((String) value);
                 		 break;
-          
                 	 }
                 	 
                  });

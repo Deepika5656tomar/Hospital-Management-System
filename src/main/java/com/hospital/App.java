@@ -183,7 +183,7 @@ public class App
         			String updateDoctorId = sc.next();
         			 Map<String, Object> updatesDoctor = new HashMap<>();
         			    while (true) {
-        			    	System.out.println("(Name,specialization,phone,department)");
+        			    	System.out.println("(name,specialization,phoneno)");
         			        System.out.println("Enter field name to update (or type 'done' to finish): ");
         			        String field = sc.next();
         			        if ("done".equalsIgnoreCase(field)) break;
@@ -192,18 +192,15 @@ public class App
         			        Object value;
         			        
         			        switch (field) {
-        			            case "Name":
+        			            case "name":
         			            	value=sc.next();
         			            	break;
         			            case "specialization":
         			            	value=sc.next();
         			            	break;
-        			            case "phone":
+        			            case "phoneno":
         			                value = sc.next();
         			                break;
-        			            case "department":
-        			            	value=sc.next();
-        			            	break;
         			            default:
         			                System.out.println("Invalid field name.");
         			                continue;
@@ -216,7 +213,7 @@ public class App
                 case 4:
                 	System.out.println("Enter Doctor Id to Delete:");
         			String deletedDoctorId = sc.next();
-        			patientDAO.deletePatient(deletedDoctorId);
+        			doctorDAO.deleteDoctor(deletedDoctorId);
         			System.out.println("Doctor details deleted successfully.");
         			break;
                 case 5:
@@ -255,7 +252,7 @@ public class App
                     String appointmentId = sc.next();
                     System.out.print("Enter Patient ID: ");
                     Patient patient = patientDAO.getPatientById(sc.next());
-                    System.out.print("Enter Doctor Name: ");
+                    System.out.print("Enter Doctor Id: ");
                     Doctor doctor = doctorDAO.getDoctorByName(sc.next());
                     System.out.print("Enter Date (yyyy-mm-dd): ");
                     Date appointmentDate = Date.valueOf(sc.next());
