@@ -24,10 +24,19 @@ public class DoctorDAO {
             return session.createQuery("FROM Doctor", Doctor.class).list();
         }
     }
-
-    public Doctor getDoctorById(String doctorId) {
+    public List<Doctor> fetchAllDoctorsWithDepartment(String dept) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            return session.get(Doctor.class, doctorId);
+        	String hql = "FROM Doctor d JOIN FETCH d.department WHERE d.department.departmentName = :departmentName";
+            return session.createQuery(hql, Doctor.class).setParameter("departmentName", dept).list();
+        }catch(Exception e) {
+        	e.printStackTrace();
+        	return null;
+        }
+    }
+
+    public Doctor getDoctorByName(String name) {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            return session.get(Doctor.class, name);
         }
     }
     public void updateDoctorDetails(String doctorId, Map<String,Object> updatesDoctor) {
@@ -45,9 +54,11 @@ public class DoctorDAO {
                 		 doctor.setSpecialization((String) value);
                 		 break;
                 	 case "phoneno":
-                		 doctor.setPhone((String) value);
+                		 doctor.setPhoneno((String) value);
                 		 break;
+          
                 	 }
+                	 
                  });
                 session.update(doctor);
             }

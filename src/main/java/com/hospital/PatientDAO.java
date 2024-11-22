@@ -38,10 +38,10 @@ public class PatientDAO {
             if (patient != null) {
                 updates.forEach((field,value)->{
                 	switch(field) {
-                	   case "firstname":
+                	   case "firstName":
                 		   patient.setFirstname((String) value); 
                 		   break;
-                	   case "lastname":
+                	   case "lastName":
                            patient.setLastname((String) value);
                            break;
                        case "dob":

@@ -12,18 +12,10 @@ public class Patient {
 	private Date dob;
 	private String gender;
 	private String phone;
-	public String getPatientId() {
-		return patientId;
-	}
-	
-	
 	
 	public Patient() {
 		super();
 	}
-
-
-
 	public Patient(String patientId, String firstname, String lastname, Date dob, String gender, String phone) {
 		super();
 		this.patientId = patientId;
@@ -33,8 +25,9 @@ public class Patient {
 		this.gender = gender;
 		this.phone = phone;
 	}
-
-
+	public String getPatientId() {
+		return patientId;
+	}
 	public void setPatientId(String patientId) {
 		this.patientId = patientId;
 	}

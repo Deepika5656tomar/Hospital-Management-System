@@ -9,28 +9,23 @@ public class Doctor {
 	private String name;
 	private String specialization;
 	private String phoneno;
-	
-	public String getDoctorId() {
-		return doctorId;
-	}
-	
-	
-	
+	@ManyToOne
+	@JoinColumn(name="departmentId")
+	private Department department;
 	public Doctor() {
 		super();
 	}
-
-
-
-	public Doctor(String doctorId, String name, String specialization, String phone) {
+	public Doctor(String doctorId, String name, String specialization, String phone,Department department) {
 		super();
 		this.doctorId = doctorId;
 		this.name = name;
 		this.specialization = specialization;
 		this.phoneno = phone;
+		this.department = department;
 	}
-
-
+	public String getDoctorId() {
+		return doctorId;
+	}
 	public void setDoctorId(String doctorId) {
 		this.doctorId = doctorId;
 	}
@@ -46,17 +41,23 @@ public class Doctor {
 	public void setSpecialization(String specialization) {
 		this.specialization = specialization;
 	}
-	public String getPhone() {
+	
+	public String getPhoneno() {
 		return phoneno;
 	}
-	public void setPhone(String phone) {
-		this.phoneno = phone;
+	public void setPhoneno(String phoneno) {
+		this.phoneno = phoneno;
 	}
-	
+	public Department getDepartment() {
+		return department;
+	}
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
 	@Override
 	public String toString() {
-		return "Doctor [doctorId=" + doctorId + ", name=" + name + ", specialization=" + specialization + ", phone="
-				+ phoneno + "]";
+		return "Doctor [doctorId=" + doctorId + ", name=" + name + ", specialization=" + specialization + ", phoneno="
+				+ phoneno + ", department=" + department + "]";
 	}
 	
 	

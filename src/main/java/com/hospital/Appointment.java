@@ -16,9 +16,6 @@ public class Appointment {
 	private Doctor doctor;
 	private Date appointmentDate;
 	private String status;
-	public String getAppointmentId() {
-		return appointmentId;
-	}
 	
 	public Appointment() {
 		super();
@@ -32,7 +29,9 @@ public class Appointment {
 		this.appointmentDate = appointmentDate;
 		this.status = status;
 	}
-	
+	public String getAppointmentId() {
+		return appointmentId;
+	}
 	public void setAppointmentId(String appointmentId) {
 		this.appointmentId = appointmentId;
 	}
