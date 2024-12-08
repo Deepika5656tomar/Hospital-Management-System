@@ -1,10 +1,13 @@
-package com.hospital;
+package com.hospital.dao;
 
 import java.util.List;
 import java.util.Map;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
+import com.hospital.model.Doctor;
+import com.hospital.util.HibernateUtil;
 
 public class DoctorDAO {
 	public void insertDoctor(Doctor doctor) {

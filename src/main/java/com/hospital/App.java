@@ -1,10 +1,18 @@
 package com.hospital;
-
 import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+
+import com.hospital.dao.AppointmentDAO;
+import com.hospital.dao.DepartmentDAO;
+import com.hospital.dao.DoctorDAO;
+import com.hospital.dao.PatientDAO;
+import com.hospital.model.Appointment;
+import com.hospital.model.Department;
+import com.hospital.model.Doctor;
+import com.hospital.model.Patient;
 
 
 
@@ -325,7 +333,8 @@ public class App
             System.out.println("1. Add Department");
             System.out.println("2. View All Departments");
             System.out.println("3. View department by Id");
-            System.out.println("4. Back to Main Menu");
+            System.out.println("4. Delete Department");
+            System.out.println("5. Back to Main Menu");
             System.out.println("Enter your choice");
             int choice = sc.nextInt();
             switch (choice) {
@@ -356,6 +365,12 @@ public class App
                 	System.out.println(dept);
                     break;
                 case 4:
+                	System.out.println("Enter Department Id to Delete:");
+        			String deletedDepartmentId = sc.next();
+        			appointmentDAO.deleteAppointment(deletedDepartmentId);
+        			System.out.println("Department deleted successfully.");
+        			break;
+                case 5:
                     return;
                 default:
                     System.out.println("Invalid choice. Please try again.");

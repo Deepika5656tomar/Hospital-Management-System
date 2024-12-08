@@ -1,4 +1,4 @@
-package com.hospital;
+package com.hospital.dao;
 
 import java.util.List;
 
@@ -6,6 +6,9 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+
+import com.hospital.model.Department;
+import com.hospital.util.HibernateUtil;
 
 public class DepartmentDAO {
 	public void insertDepartment(Department department) {
@@ -59,6 +62,18 @@ public class DepartmentDAO {
     public List<Department> fetchAllDepartments() {
     	try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             return session.createQuery("FROM Department", Department.class).list();
+        }
+    }
+    public void deleteDepartment(String departmentId) {
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            Department department = session.get(Department.class, departmentId);
+            if (department != null) session.delete(department);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) transaction.rollback();
+            e.printStackTrace();
         }
     }
 }

@@ -1,6 +1,5 @@
-package com.hospital;
+ package com.hospital.model;
 import javax.persistence.*;
-import java.util.List;
 @Entity
 @Table (name= "Department")
 public class Department {
